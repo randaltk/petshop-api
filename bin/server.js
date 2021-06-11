@@ -1,22 +1,21 @@
-"use strict";
 const app = require("../src/app");
-const http = require("http");
 const debug = require("debug")("nodestr:server");
-const express = require("express");
+const http = require("http");
 
 const port = normalizePort(process.env.PORT || "3000");
+app.set("port", port);
 
 const server = http.createServer(app);
 
 server.listen(port);
 server.on("error", onError);
 server.on("listening", onListening);
-console.log("Api rodando na porta" + port);
+console.log("Api rodando na porta" + " " + port);
 
 function normalizePort(val) {
   const port = parseInt(val, 10);
 
-  if (isNan(port)) {
+  if (isNaN(port)) {
     return val;
   }
 
